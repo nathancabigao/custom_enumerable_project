@@ -1,5 +1,15 @@
 module Enumerable
   # Your code goes here
+  def my_each_with_index
+    return self unless block_given?
+
+    index = 0
+    for element in self
+      yield element, index
+      index += 1
+    end
+    self
+  end
 end
 
 # You will first have to define my_each
