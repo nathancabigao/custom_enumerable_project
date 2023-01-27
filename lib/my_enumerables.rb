@@ -20,6 +20,15 @@ module Enumerable
     end
     array
   end
+
+  def my_all?(&block)
+    block = proc { |obj| obj } unless block_given?
+    count = 0
+    for element in self
+      count += 1 if block.call(element)
+    end
+    count == self.size
+  end
 end
 
 # You will first have to define my_each
