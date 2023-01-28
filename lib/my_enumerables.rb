@@ -29,6 +29,14 @@ module Enumerable
     end
     count == self.size
   end
+
+  def my_any?(&block)
+    block = proc { |obj| obj } unless block_given?
+    for element in self
+      return true if block.call(element) == true
+    end
+    false
+  end
 end
 
 # You will first have to define my_each
