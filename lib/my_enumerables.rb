@@ -33,9 +33,17 @@ module Enumerable
   def my_any?(&block)
     block = proc { |obj| obj } unless block_given?
     for element in self
-      return true if block.call(element) == true
+      return true if block.call(element)
     end
     false
+  end
+
+  def my_none?(&block)
+    block = proc { |obj| obj } unless block_given?
+    for element in self
+      return false if block.call(element)
+    end
+    true
   end
 end
 
