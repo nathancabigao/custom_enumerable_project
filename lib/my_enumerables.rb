@@ -23,11 +23,10 @@ module Enumerable
 
   def my_all?(&block)
     block = proc { |obj| obj } unless block_given?
-    count = 0
     for element in self
-      count += 1 if block.call(element)
+      return false unless block.call(element)
     end
-    count == self.size
+    true
   end
 
   def my_any?(&block)
