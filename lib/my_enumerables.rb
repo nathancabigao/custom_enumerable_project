@@ -1,7 +1,7 @@
 module Enumerable
   # Your code goes here
   def my_each_with_index
-    return self unless block_given?
+    return to_enum(:my_each_with_index) unless block_given?
 
     index = 0
     for element in self
@@ -12,7 +12,7 @@ module Enumerable
   end
 
   def my_select
-    return self unless block_given?
+    return to_enum(:my_select) unless block_given?
 
     array = []
     for element in self
@@ -80,7 +80,7 @@ end
 class Array
   # Define my_each here
   def my_each
-    return self unless block_given?
+    return to_enum(:my_each) unless block_given?
 
     for element in self
       yield element
