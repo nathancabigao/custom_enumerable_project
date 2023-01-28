@@ -63,6 +63,14 @@ module Enumerable
     end
     array
   end
+
+  def my_inject(initial = nil)
+    memo = initial.nil? ? first : initial
+    for element in self
+      memo = yield(memo, element)
+    end
+    memo
+  end
 end
 
 # You will first have to define my_each
