@@ -44,6 +44,15 @@ module Enumerable
     end
     true
   end
+
+  def my_count(&block)
+    block = proc { |obj| obj } unless block_given?
+    count = 0
+    for element in self
+      count += 1 if block.call(element)
+    end
+    count
+  end
 end
 
 # You will first have to define my_each
